@@ -8,6 +8,7 @@
 
 import math
 
+zeroValue = 0;
 
 def main():
     # input
@@ -15,34 +16,30 @@ def main():
     print("grandparents tell you if you are")
     print("allowed to date their grandchild")
     print("")
-    user_age_string = int(input("Enter your age: "))
+    user_age_string = input("Enter your age: ")
+    # user_age_int = user_age_string
 
     # process
-    # checking that user_age_string is an integer
+    # checking that user_age_string is an int
     try:
-        user_age_int = int(user_age_string)
+        user_age_string = int(user_age_string)
     except ValueError:
         print("\n")
-        print("Please enter a valid number. ")
-        print(("{} is not valid.\n").format(user_age_string))
-
-    # checking that user_age_int isn't negative
-    try:
-        user_age_int > 0
-    except:
+        print(("Please enter a valid number. {} is not valid.\n").format(user_age_string))
+    finally:
         print("")
-        print("Please do not enter a negative number.")
 
     # checking that user_age_int isn't zero
-    try:
-        user_age_int != 0
-    except:
-        print("")
+    if user_age_string == 0:
         print("Please do not enter zero.")
+
+    # checking that user_age_int isn't negative
+    if user_age_string < 0:
+        print("Please do not enter a negative number or decimal.")
 
     # Output
     # checking to see if grandchild can be dated
-    if user_age_int > 25 and user_age_int < 40:
+    if user_age_string > 25 and user_age_string < 40:
         print("You are in the right age range. Congratulations :)")
     else:
         print("You are not in the right age range. Sorry :(")
